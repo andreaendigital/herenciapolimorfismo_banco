@@ -1,5 +1,7 @@
 package bank_europe.cuentas;
 
+import bank_europe.core.CuentaBancaria;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -9,6 +11,13 @@ package bank_europe.cuentas;
  *
  * @author Andrea
  */
-public class CuentaCorriente {
+public class CuentaCorriente extends CuentaBancaria {
+    public CuentaCorriente (String numeroCuenta, double saldo){
+        super(numeroCuenta, saldo);
+    }
     
+    @Override
+    public double calcularInteres(){
+        return 0.01 * getSaldo(); // 1% de interes
+    }
 }

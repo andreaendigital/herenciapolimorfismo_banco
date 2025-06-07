@@ -10,13 +10,13 @@ import bank_europe.core.CuentaBancaria;
  *
  * @author Andrea
  */
-public class CuentaAhorros extends CuentaBancaria {
-    public CuentaAhorros (String numeroCuenta, double saldo){
+public class CuentaDigital extends CuentaBancaria {
+    public CuentaDigital (String numeroCuenta, double saldo){
         super(numeroCuenta, saldo);
     }
     
     @Override
     public double calcularInteres(){
-        return 0.03 * getSaldo(); // 3% de interes
+        return 0.015 * getSaldo(); // 1.5% de interes
     }
 }
