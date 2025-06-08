@@ -1,6 +1,6 @@
-package bank_europe.cuentas;
+package com.bank_europe.manager.cuentas;
 
-import bank_europe.core.CuentaBancaria;
+import com.bank_europe.manager.core.CuentaBancaria;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

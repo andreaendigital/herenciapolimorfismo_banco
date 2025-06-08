@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package bank_europe.clientes;
+package com.bank_europe.manager;
 
 /**
  *
  * @author Andrea
  */
-public class Cliente {
-    
+public class GestorCuentas {
+   
 }
