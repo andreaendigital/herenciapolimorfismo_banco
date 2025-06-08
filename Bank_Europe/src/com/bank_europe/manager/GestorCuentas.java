@@ -79,8 +79,120 @@ public class GestorCuentas {
                 break;
             default :
                 System.out.println("Opcion invalida.");
-                  
+                return;  
+        }
+        
+        clientesPorRut.put(rut, cliente);
+        cuentasPorRut.put(rut, cuenta);
+        System.out.println("Cliente y cuenta registrados exitosamente");
+        System.out.println("Número de cuenta asignado: " + numeroCuenta);
+        
+    }
+    
+    private boolean validarRut(String rut) {
+        return Pattern.matches("^\\d{1,2}\\.\\d{3}\\.\\d{3}-[\\dKk]$", rut);
+    }
+
+    
+    private String generarNumeroCuenta(){
+        Random random = new Random();
+        int numero = 100000000 + random.nextInt(900000000); //numero de 9 digitos
+        return String.valueOf(numero);
+    }
+    
+    public void verInformacionCliente(){
+        System.out.println("Ingrese Rut del cliente: ");
+        String rut = scanner.nextLine();
+        
+        Cliente cliente = clientesPorRut.get(rut);
+        CuentaBancaria cuenta = cuentasPorRut.get(rut);
+        
+        if(cliente == null || cuenta == null){
+            System.out.println("Cliente no encontrado");
+            return;
+        }
+        
+        System.out.println("Nombre: " + cliente.getNombre());
+        System.out.println("RUT: " + cliente.getRut());
+        System.out.println("Tipo de cuenta: " + cuenta.getTipoCuenta());
+        
+    }
+    
+    public void listarClientes(){
+        if(clientesPorRut.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return;
+        }
+        for(String rut : clientesPorRut.keySet()){
+            Cliente c = clientesPorRut.get(rut);
+            CuentaBancaria cuenta = cuentasPorRut.get(rut);
+            System.out.println("Nombre: " + c.getNombre() + ", RUT: " + c.getRut() + ", Tipo de Cuenta: " + cuenta.getTipoCuenta() );
         }
         
     }
+    
+    public void depositarDinero() {
+        System.out.println("Ingrese RUT del Cliente:");
+        String rut = scanner.nextLine();
+        
+        CuentaBancaria cuenta = cuentasPorRut.get(rut);
+        if(cuenta == null){
+            System.out.println("Cliente no encontrado");
+            return;
+        }
+        
+        System.out.println("Tipo de cuenta: " + cuenta.getTipoCuenta());
+        System.out.println("Desea continuar con el deposito? (s/n): ");
+        String confirmacion = scanner.nextLine();
+        if(!confirmacion.equalsIgnoreCase("s")){
+            System.out.println("Deposito Cancelado");
+            return;
+        }
+        
+        System.out.println("Ingrese monto a depositar: ");
+        double monto = Double.parseDouble(scanner.nextLine());
+        cuenta.depositar(monto);
+        System.out.println("Deposito realizado. Su nuevo saldo es: $ " + cuenta.getSaldo());
+        
+    }
+    
+    public void girarDinero(){
+        System.out.println("Ingrese RUT del Cliente:");
+        String rut = scanner.nextLine();
+        
+        CuentaBancaria cuenta = cuentasPorRut.get(rut);
+        if(cuenta == null){
+            System.out.println("Cliente no encontrado");
+            return;
+        }
+        
+         System.out.println("Ingrese monto a retirar: ");
+        double monto = Double.parseDouble(scanner.nextLine());
+        
+        boolean exito = cuenta.retirar(monto);
+        
+        if(exito){
+            System.out.println("Retiro realizado. Su nuevo saldo es: $ " + cuenta.getSaldo() );
+        }else{
+            System.out.println("No se pudo realizar el retiro. Saldo actual: $ "+ cuenta.getSaldo() );
+        }
+        
+        
+    }
+    
+    public void consultarSaldo(){
+        System.out.println("Ingrese RUT del Cliente:");
+        String rut = scanner.nextLine();
+        
+        CuentaBancaria cuenta = cuentasPorRut.get(rut);
+        if(cuenta == null){
+            System.out.println("Cliente no encontrado");
+            return;
+        }
+        
+        System.out.println("Tipo de Cuenta: " + cuenta.getTipoCuenta() );
+        System.out.println("Saldo actual: " + cuenta.getSaldo() );
+        
+    }
+    
 }
