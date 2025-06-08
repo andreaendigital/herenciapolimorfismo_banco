@@ -1,5 +1,6 @@
 package com.bank_europe.manager.cuentas;
 
+import com.bank_europe.manager.clientes.Cliente;
 import com.bank_europe.manager.core.CuentaBancaria;
 
 /*
@@ -12,12 +13,18 @@ import com.bank_europe.manager.core.CuentaBancaria;
  * @author Andrea
  */
 public class CuentaCorriente extends CuentaBancaria {
-    public CuentaCorriente (String numeroCuenta, double saldo){
-        super(numeroCuenta, saldo);
+    public CuentaCorriente (Cliente clientes,String numeroCuenta){
+        super(clientes, numeroCuenta);
     }
     
     @Override
     public double calcularInteres(){
         return 0.01 * getSaldo(); // 1% de interes
     }
+    
+    @Override
+    public String getTipoCuenta() {
+        return "Cuenta Corriente";
+    }
+    
 }

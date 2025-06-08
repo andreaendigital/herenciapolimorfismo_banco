@@ -23,14 +23,32 @@ public class GestorCuentas {
    
     private Map<String, CuentaBancaria> cuentasPorRut = new HashMap<>();
     private Map<String, Cliente> clientesPorRut = new HashMap<>();
-    
+    private static int contadorNumeroCuenta = 100000000; // Numeor inicial de 9 digitos para los numeros de cuenta
     private Scanner scanner = new Scanner(System.in);
     
     public void registrarClienteCuenta(){
-        System.out.println("Ingrese nombre de cliente: ");
-        String nombre = scanner.nextLine().toLowerCase();
+        String nombre;
+        
+        while (true){
+            System.out.println("Ingrese nombre de cliente: ");
+            nombre = scanner.nextLine().toLowerCase();
+            
+            if(validarRut(nombre)){
+                System.out.println("Eso parece un RUT, no un nombre. Por favor, ingresa nuevamente tu nombre");
+                
+            }else if(nombre.isBlank()){
+                System.out.println("El nombre no puede estar vacio. Intente nuevamente.");
+            }else if(nombre.matches("\\d+")){
+                System.out.println("El nombre no puede ser numeros. Intente nuevamente.");
+            }else{
+                break;
+            }
+        }
+        
+        
         
         String rut;
+        
         while(true){
             System.out.println("Ingrese Rut del Cliente (formato XX.XXX.XXX-X): ");
             rut = scanner.nextLine();
@@ -51,7 +69,7 @@ public class GestorCuentas {
         System.out.println("2. Cuenta Corriente");
         System.out.println("3. Cuenta Digital");
         
-        int opcion = Integer.parseInt(scanner.nextLine());
+        int opcion = validarInt(scanner);
 
         CuentaBancaria cuenta = null;
         Cliente cliente = new Cliente(nombre, rut);
@@ -66,16 +84,13 @@ public class GestorCuentas {
                     System.out.println("Mono insuficiente para abrir cuenta de ahorro.");
                     return;
                 }
-                cuenta = new CuentaAhorro (cliente,abono);
-                cuenta.setNumeroCuenta(numeroCuenta);
+                cuenta = new CuentaAhorros(cliente, abono, numeroCuenta);
                 break;
             case 2:
-                cuenta = new CuentaCorriente (cliente);
-                cuenta.setNumeroCuenta(numeroCuenta);
+                cuenta = new CuentaCorriente (cliente, numeroCuenta);                
                 break;
             case 3:
-                cuenta = new Cuentadigital (cliente);
-                cuenta.setNumeroCuenta(numeroCuenta);
+                cuenta = new CuentaDigital (cliente, numeroCuenta);
                 break;
             default :
                 System.out.println("Opcion invalida.");
@@ -95,9 +110,7 @@ public class GestorCuentas {
 
     
     private String generarNumeroCuenta(){
-        Random random = new Random();
-        int numero = 100000000 + random.nextInt(900000000); //numero de 9 digitos
-        return String.valueOf(numero);
+        return String.valueOf(contadorNumeroCuenta++);
     }
     
     public void verInformacionCliente(){
@@ -194,5 +207,19 @@ public class GestorCuentas {
         System.out.println("Saldo actual: " + cuenta.getSaldo() );
         
     }
+    
+        public static int validarInt(Scanner scanner){
+        int opcion =-1;
+        while(true){
+            if(scanner.hasNextInt()){
+                opcion = scanner.nextInt();
+                break;
+            }else{
+                System.out.println("Opcion no valida. Ingrese un numero, por favor.");
+                scanner.next(); //Evita bucle y limpia la entrada
+            }
+        }
+        return opcion;
+    }    //Cierre validarInt    
     
 }

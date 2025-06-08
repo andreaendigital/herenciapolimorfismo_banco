@@ -4,6 +4,7 @@
  */
 package com.bank_europe.manager.cuentas;
 
+import com.bank_europe.manager.clientes.Cliente;
 import com.bank_europe.manager.core.CuentaBancaria;
 
 /**
@@ -11,12 +12,17 @@ import com.bank_europe.manager.core.CuentaBancaria;
  * @author Andrea
  */
 public class CuentaDigital extends CuentaBancaria {
-    public CuentaDigital (String numeroCuenta, double saldo){
-        super(numeroCuenta, saldo);
+    public CuentaDigital (Cliente cliente, String numeroCuenta){
+        super(cliente, numeroCuenta);
     }
     
     @Override
     public double calcularInteres(){
         return 0.015 * getSaldo(); // 1.5% de interes
+    }
+    
+    @Override
+    public String getTipoCuenta() {
+        return "Cuenta Digital";
     }
 }

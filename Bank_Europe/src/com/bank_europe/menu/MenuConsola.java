@@ -24,7 +24,7 @@ public class MenuConsola {
         int opcion;
         
         do{
-            System.out.println("======== MENU PRINCIPAL ========");
+            System.out.println("\n======== MENU PRINCIPAL ========");
             System.out.println("1. Registrar cliente y cuenta");
             System.out.println("2. Ver informacion de cliente");
             System.out.println("3. Listar clientes");

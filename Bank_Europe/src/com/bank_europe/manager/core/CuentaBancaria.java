@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.bank_europe.manager.core;
+import com.bank_europe.manager.clientes.Cliente;
 
 /**
  *
@@ -12,30 +13,40 @@ public abstract class CuentaBancaria {
 
     private String numeroCuenta;
     private double saldo;
+    private Cliente cliente;
 
-    //constructor con un parametro
-    public CuentaBancaria(String numeroCuenta) {
+    //constructor con dos parametro
+    public CuentaBancaria(Cliente cliente, String numeroCuenta){
+        this.cliente = cliente;
         this.numeroCuenta = numeroCuenta;
-        this.saldo = 0.0;
+        this.saldo = 0;
     }
     
-    //constructor con dos parametros
-    public CuentaBancaria(String numeroCuenta, double saldo) {
+    //Constructor con tres parametros
+    public CuentaBancaria(Cliente cliente, double saldo, String numeroCuenta) {
+        this.cliente = cliente;
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
     }
-
+    
+  
     public abstract double calcularInteres();
 
+    public abstract String getTipoCuenta();
+    
     public void depositar(double monto) {
         if (monto > 0) saldo += monto;
     }
 
-    public void girar(double monto) {
-        if (monto > 0 && monto <= saldo) saldo -= monto;
+    public boolean retirar(double monto) {
+        if (monto > 0 && monto <= saldo) {
+            saldo -= monto;
+            return true;
+        }
+        return false;
     }
 
-    public double consultarSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
@@ -43,8 +54,8 @@ public abstract class CuentaBancaria {
         return numeroCuenta;
     }
 
-    public double getSaldo() {
-        return saldo;
+    public Cliente getCliente() {
+        return cliente;
     }
     
 
