@@ -5,10 +5,10 @@
 package com.bank_europe.manager;
 
 import com.bank_europe.manager.clientes.Cliente;
-import com.bank_europe.manager.core.CuentaBancaria;
-import com.bank_europe.manager.cuentas.CuentaAhorros;
-import com.bank_europe.manager.cuentas.CuentaCorriente;
-import com.bank_europe.manager.cuentas.CuentaDigital;
+import com.bank_europe.manager.cuentas.CuentaBancaria;
+import com.bank_europe.manager.cuentas.tipo.CuentaAhorros;
+import com.bank_europe.manager.cuentas.tipo.CuentaCorriente;
+import com.bank_europe.manager.cuentas.tipo.CuentaDigital;
 import java.util.HashMap;
 import java.util.*;
 import java.util.Map;
@@ -79,7 +79,7 @@ public class GestorCuentas {
         switch(opcion){
             case 1:
                 System.out.println("Ingrese monto inicial (minimo $ 5.000): ");
-                double abono = Double.parseDouble(scanner.nextLine());
+                double abono = (validarInt(scanner));
                 if(abono<5000){
                     System.out.println("Mono insuficiente para abrir cuenta de ahorro.");
                     return;
@@ -100,7 +100,7 @@ public class GestorCuentas {
         clientesPorRut.put(rut, cliente);
         cuentasPorRut.put(rut, cuenta);
         System.out.println("Cliente y cuenta registrados exitosamente");
-        System.out.println("Número de cuenta asignado: " + numeroCuenta);
+        System.out.println("Numero de cuenta asignado: " + numeroCuenta);
         
     }
     
