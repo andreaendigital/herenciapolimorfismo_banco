@@ -12,6 +12,7 @@ Bank Europe se encuentra en proceso de crecimiento y posicionamiento, tanto a ni
 4.	Toda cuenta corriente tiene las siguientes características:   
 •	Número: Ej: 123456789   
 •	Saldo: Ej: 1550900
+
 A partir de aquí, deberás aplicar lo aprendido en las semanas 1 y 2 y así poder entregar una solución final al caso planteado. Para ello, tendrás que seguir los siguientes pasos: 
 
 ## Sobre el proyecto 🚀
@@ -54,17 +55,21 @@ Para realizar este paso, tendrás que realizar lo siguiente:
 ## Visuales :mage_woman:
 
 Estructuración de carpetas:
+
 ![Captura de pantalla 2025-06-09 140922](https://github.com/user-attachments/assets/a52303b1-090e-4550-afa0-70d74328f01c)
 
 Menú inicial con manejo de errores: 
+
 ![Captura de pantalla 2025-06-09 140859](https://github.com/user-attachments/assets/57754464-31ca-4f2a-b76c-951c8ba1d7cd)
 
 
 Manejo de errores y validaciones en el registro de clientes: 
 Numero de cuenta autogenerativo
+
 ![Captura de pantalla 2025-06-09 141734](https://github.com/user-attachments/assets/de2fe9a9-f01f-4a95-9cb9-43aff906cc53)
 
 Al ver la información y consultar saldo: 
+
 ![Captura de pantalla 2025-06-09 142015](https://github.com/user-attachments/assets/e549254c-0690-4c39-b634-f588d2dde995)
 
 Se realiza depósito y giro y una consulta nueva de saldo
@@ -72,7 +77,9 @@ Se realiza depósito y giro y una consulta nueva de saldo
 ![Captura de pantalla 2025-06-09 142126](https://github.com/user-attachments/assets/f51c4e7f-7bde-4486-98d1-df3c6c536922)
 
 Al listar los clientes: 
+
 ![Captura de pantalla 2025-06-09 142152](https://github.com/user-attachments/assets/7f8c7918-3941-4fa6-95c9-616ef6ec43a9)
+
 
 
 ## Autora ⚡ 
